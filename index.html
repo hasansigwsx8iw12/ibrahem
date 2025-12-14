@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-    <script>
+   <script>
 const translations = {
     en: {
         "student Front-end & Back-end Developer": "Student Front-end & Back-end Developer",
@@ -83,9 +83,16 @@ function setLanguage(lang) {
     const elements = document.querySelectorAll("h1, h2, p, a, li, button");
 
     elements.forEach(el => {
-        const text = el.innerText.trim();
-        if (translations[lang] && translations[lang][text]) {
-            el.innerText = translations[lang][text];
+        if (!el.dataset.original) {
+            el.dataset.original = el.innerText.trim();
+        }
+
+        const originalText = el.dataset.original;
+
+        if (translations[lang] && translations[lang][originalText]) {
+            el.innerText = translations[lang][originalText];
+        } else {
+            el.innerText = originalText; 
         }
     });
 
@@ -142,4 +149,5 @@ function setLanguage(lang) {
 </body>
 
 </html>
+
 
