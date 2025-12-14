@@ -97,9 +97,21 @@ function setLanguage(lang) {
     });
 
     document.body.dir = (lang === "ar") ? "rtl" : "ltr";
-}
+const langButtons = document.querySelectorAll('.language-switch button');
+
+langButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        langButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    });
+});
 </script>
     <body>
+     <div class="language-switch">
+    <button onclick="setLanguage('en')" class="active">EN</button>
+    <button onclick="setLanguage('ar')">AR</button>
+    <button onclick="setLanguage('ru')">RU</button>
+</div>
    <div class="contenar">
     <img src="pngtree-3d-render-of-a-programmer-in-action-image_3752209.jpg" alt="" class="ava">
     <h1>ibrahem alaa ibrahem</h1>
@@ -141,14 +153,11 @@ function setLanguage(lang) {
          <a class="contact-btn" href="mailto:ibrahemalaaibrahem156@gmail.com">Contact Me in email</a>
     </div>
    </div> 
-   <div class="language-switch">
-    <button onclick="setLanguage('en')">EN</button>
-    <button onclick="setLanguage('ar')">AR</button>
-    <button onclick="setLanguage('ru')">RU</button>
-   </div>
+ 
 </body>
 
 </html>
+
 
 
 
