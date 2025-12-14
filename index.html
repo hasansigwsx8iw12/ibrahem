@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-   <script>
+<script>
 const translations = {
     en: {
         "student Front-end & Back-end Developer": "Student Front-end & Back-end Developer",
@@ -64,7 +64,7 @@ const translations = {
         "communication me": "Связаться со мной",
         "who iam": "Кто я",
         "im a student studying web development and programming and i strive to omprove myself further.im at the level i've reached,but in the future,i will be among the strongest in this field":
-        "Я студент, изучающий веб-разработку и программирование, и стремлюсь постоянно развиваться. Я доволен своим текущим уровнем, но в будущем буду среди лучших в этой сфере",
+        "Я студент, изучающий веб-разработку и программирование и стремлюсь постоянно развиваться. Я доволен текущим уровнем, но в будущем буду среди лучших в этой сфере",
         "my service": "Мои услуги",
         "Creating simple static websites using HTML &CSS & JS":
         "Создание простых статических сайтов с использованием HTML, CSS и JavaScript",
@@ -79,20 +79,20 @@ const translations = {
     }
 };
 
+const elements = document.querySelectorAll("h1, h2, p, a, li");
+
+elements.forEach(el => {
+    el.dataset.original = el.innerText.trim();
+});
+
 function setLanguage(lang) {
-    const elements = document.querySelectorAll("h1, h2, p, a, li, button");
-
     elements.forEach(el => {
-        if (!el.dataset.original) {
-            el.dataset.original = el.innerText.trim();
-        }
+        const original = el.dataset.original;
 
-        const originalText = el.dataset.original;
-
-        if (translations[lang] && translations[lang][originalText]) {
-            el.innerText = translations[lang][originalText];
+        if (translations[lang] && translations[lang][original]) {
+            el.innerText = translations[lang][original];
         } else {
-            el.innerText = originalText; 
+            el.innerText = original;
         }
     });
 
@@ -149,5 +149,6 @@ function setLanguage(lang) {
 </body>
 
 </html>
+
 
 
